@@ -1,6 +1,6 @@
 # Studio Dashboard - Next.js with Supabase Authentication
 
-This project is a modern web application built with Next.js and Supabase, featuring a complete authentication system. This README explains how the application was created and how key components like authentication work.
+This project is a modern web application built with Next.js and Supabase, featuring a complete authentication system. Here I explain how the application was created and how key components like authentication work.
 
 ## How This Application Was Created
 
@@ -10,13 +10,7 @@ The application was created using the official Next.js with Supabase Starter Kit
 
 ```bash
 # Using npm
-npx create-next-app --example with-supabase with-supabase-app
-
-# Or using yarn
-yarn create next-app --example with-supabase with-supabase-app
-
-# Or using pnpm
-pnpm create next-app --example with-supabase with-supabase-app
+npx create-next-app -e with-supabase
 ```
 
 After creating the initial project, the following packages were installed:
@@ -121,12 +115,6 @@ npm install
 
 # Run development server
 npm run dev
-
-# Build for production
-npm run build
-
-# Start production server
-npm start
 ```
 
 ---
