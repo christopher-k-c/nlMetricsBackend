@@ -15,15 +15,6 @@ npx create-next-app -e with-supabase
 
 After creating the initial project, the following packages were installed:
 
-```bash
-# UI components
-npm install @radix-ui/react-checkbox @radix-ui/react-dropdown-menu @radix-ui/react-label @radix-ui/react-slot
-npm install class-variance-authority clsx lucide-react next-themes
-npm install tailwind-merge tailwindcss-animate
-
-# Formatting
-npm install prettier
-```
 
 ### Project Configuration
 
@@ -36,67 +27,6 @@ The project uses:
 
 ## Key Components
 
-### Authentication System
-
-The authentication system is built using Supabase Auth with cookie-based sessions, which allows for seamless authentication across:
-- Client Components
-- Server Components
-- API Routes
-- Server Actions
-- Middleware
-
-#### How Authentication Works
-
-1. **Setup**:
-   - Environment variables in `.env.local` configure the Supabase connection
-   - Middleware ensures cookie-based session management across the app
-
-2. **Authentication Flow**:
-   - User signs up with email/password via the `/sign-up` form
-   - Email verification link is sent to the user
-   - User signs in via the `/sign-in` form
-   - Authentication state is maintained through cookies
-   - Protected routes require authentication
-
-3. **Implementation Details**:
-
-   - **Server Actions** (`app/actions.ts`):
-     - `signUpAction` - Handles user registration
-     - `signInAction` - Authenticates users
-     - `signOutAction` - Logs users out
-     - `forgotPasswordAction` - Initiates password reset
-     - `resetPasswordAction` - Completes password reset
-
-   - **Supabase Client Setup**:
-     - Server-side client (`utils/supabase/server.ts`) - Uses cookie storage
-     - Middleware client (`utils/supabase/middleware.ts`) - Handles session updates
-     - Client-side setup (`utils/supabase/client.ts`) - For browser interactions
-
-   - **Route Protection**:
-     - Middleware intercepts all requests to validate authentication
-     - Protected routes are under `/protected/*`
-     - Authentication pages are under `/auth/*` and `/(auth-pages)/*`
-
-## Folder Structure
-
-```
-studio-dashboard/
-├── app/                      # Next.js App Router
-│   ├── (auth-pages)/         # Auth-related pages
-│   ├── auth/                 # Auth callback handlers 
-│   ├── protected/            # Protected routes
-│   ├── profile/              # User profile pages
-│   └── actions.ts            # Server actions for auth
-├── components/               # UI components
-├── lib/                      # Library code
-├── utils/
-│   └── supabase/             # Supabase configuration
-│       ├── client.ts         # Browser client
-│       ├── server.ts         # Server client
-│       └── middleware.ts     # Auth middleware
-├── middleware.ts             # Next.js middleware
-└── .env.local                # Environment variables
-```
 
 ## Environment Setup
 

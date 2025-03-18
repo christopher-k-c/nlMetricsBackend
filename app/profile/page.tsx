@@ -1,8 +1,15 @@
+import { WorkSubmissionForm } from '@/components/work-submission-form';
 import { createClient } from '@/utils/supabase/server'
 import { redirect } from 'next/navigation';
 
+
 export default async function Page() {
+
+  // Establish connection to Supabase
   const supabase = await createClient()
+
+
+  // Destructure user object via Supabase auth
   const {
     data: { user },
   } = await supabase.auth.getUser();
@@ -10,7 +17,25 @@ export default async function Page() {
   if (!user) {
     return redirect("/sign-in");
   }
-  const { data: profiles } = await supabase.from('profiles').select()
 
-  return <pre>{JSON.stringify(profiles, null, 2)}</pre>
+  // Get user profile from Supabase 
+  const { data: userProfile, error: profileError } = await supabase
+    .from('profiles')
+    .select('id, username')  // Only select needed fields
+    .eq('id', user.id)  // Assuming user is already checked for null
+    .single();  // Expect a single result
+
+
+  if (profileError) {
+    console.log(profileError + "Profile not found")
+  }
+
+  return (
+    <>
+    <WorkSubmissionForm userProfile={userProfile} />
+    </>
+
+
+
+)
 }
