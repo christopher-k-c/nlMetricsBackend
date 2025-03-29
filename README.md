@@ -1,6 +1,6 @@
 # Studio Dashboard - Next.js with Supabase Authentication
 
-This project is a modern web application built with Next.js and Supabase, featuring a complete authentication system. Here I explain how the application was created and how key components like authentication work.
+A post-production dashboard tool designed to track New Look's retouching team's work. Retouchers can log daily outputs, differentiate various tasks, and add notes about their workday or specific tasks. Built with Next.js and Supabase authentication, this dashboard provides insights into both team and individual progress, helping improve workflows over time.
 
 ## How This Application Was Created
 
