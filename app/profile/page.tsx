@@ -18,6 +18,8 @@ export default async function Page() {
     return redirect("/sign-in");
   }
 
+  console.log("Auth user ID:", user.id);
+
   // Get user profile from Supabase 
   const { data: userProfile, error: profileError } = await supabase
     .from('profiles')
@@ -30,12 +32,13 @@ export default async function Page() {
     console.log(profileError + "Profile not found")
   }
 
+  console.log("Profile ID being passed:", userProfile?.id)
+
   return (
-    <>
-    <WorkSubmissionForm userProfile={userProfile} />
-    </>
-
-
-
-)
+    <div className="w-full text-white">
+      <div className="max-w-5xl mx-auto p-6 py-12">
+        <WorkSubmissionForm userProfile={userProfile} />
+      </div>
+    </div>
+  )
 }
